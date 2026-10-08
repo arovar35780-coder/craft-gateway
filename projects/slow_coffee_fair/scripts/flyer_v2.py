@@ -3,8 +3,8 @@ import importlib.util, json, os
 
 from pathlib import Path
 
-# The gateway client (craftmcp.py of the craft-apps skill); point CRAFTMCP at it if it lives elsewhere.
-CLIENT = os.environ.get("CRAFTMCP") or os.path.expandvars(r"%USERPROFILE%\.claude\skills\craft-apps\scripts\craftmcp.py")
+# The gateway client: skill/craft-apps/scripts/craftmcp.py of this repository (override with CRAFTMCP).
+CLIENT = os.environ.get("CRAFTMCP") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "skill", "craft-apps", "scripts", "craftmcp.py")
 PROJECT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("craftmcp", CLIENT)
 cm = importlib.util.module_from_spec(spec); spec.loader.exec_module(cm)

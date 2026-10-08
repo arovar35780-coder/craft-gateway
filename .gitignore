@@ -23,4 +23,4 @@ crafting-bin/build-summary.log
 gateway/index/_work/
 projects/*/out/
 projects/slow_coffee_fair/assets/
-projects/slow_coffee_fair/slow-coffee-fair-*
+projects/slow_coffee_fair/slow-coffee-fair*

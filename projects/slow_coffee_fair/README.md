@@ -8,6 +8,7 @@ An A5 flyer built entirely through the gateway: the image is drawn in PhotoCraft
    `slow-coffee-fair-v2.designcraft`, `.png` and `.pdf` in this folder. `scripts/flyer_v1.py` is the first,
    type-only version.
 
-Needs the gateway running and the `craftmcp.py` client (set `CRAFTMCP` to its path). The fonts are a display serif
+Needs the gateway running; the scripts use the repository's client `skill/craft-apps/scripts/craftmcp.py` (override
+with `CRAFTMCP`). The fonts are a display serif
 (New Kansas) and a monospace (Ballinger Mono); install them or change `SERIF` and `MONO` at the top of the scripts
 to fonts you have.

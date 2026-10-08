@@ -1,8 +1,8 @@
 """Slow Coffee Fair flyer in DesignCraft through the gateway. Font pair 13: New Kansas (display/serif) + Ballinger Mono."""
 import importlib.util, json, os
 
-# The gateway client (craftmcp.py of the craft-apps skill); point CRAFTMCP at it if it lives elsewhere.
-CLIENT = os.environ.get("CRAFTMCP") or os.path.expandvars(r"%USERPROFILE%\.claude\skills\craft-apps\scripts\craftmcp.py")
+# The gateway client: skill/craft-apps/scripts/craftmcp.py of this repository (override with CRAFTMCP).
+CLIENT = os.environ.get("CRAFTMCP") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "skill", "craft-apps", "scripts", "craftmcp.py")
 spec = importlib.util.spec_from_file_location("craftmcp", CLIENT)
 cm = importlib.util.module_from_spec(spec); spec.loader.exec_module(cm)
 cm.session("designcraft")
