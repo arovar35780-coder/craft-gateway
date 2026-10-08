@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Built apps and their build info (built locally, see crafting-bin/README.md)
+crafting-bin/*/
+!crafting-bin/designcraft/
+crafting-bin/designcraft/*
+!crafting-bin/designcraft/rebuild.ps1
+crafting-bin/logs/
+crafting-bin/build-summary.log
+
+# App clones that live next to this repository's folders
+/designcraft/
+/vectorcraft/
+/photocraft/
+/lightcraft/
+/filmcraft/
+/printcraft/
+/effectcraft/
+
+# Generated files
+gateway/index/_work/
+projects/*/out/
+projects/slow_coffee_fair/assets/
+projects/slow_coffee_fair/slow-coffee-fair-*

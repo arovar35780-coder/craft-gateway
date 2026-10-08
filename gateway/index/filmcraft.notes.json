@@ -1,0 +1,7 @@
+[
+ {"id": "render-frame-is-an-engine-render",
+  "title": "Looking at a frame of the edit",
+  "text": "render_frame {seconds?, max_side?} returns an engine render of the program frame (control method seq.render), also with the window minimized or covered; passing seconds moves the playhead. Older builds fall back to a window screenshot that hangs when the window is minimized.",
+  "keys": ["show a frame", "preview edit", "frame as image", "program monitor picture", "playhead frame"],
+  "see": ["render_frame", "playhead.set"]}
+]

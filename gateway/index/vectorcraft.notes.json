@@ -1,0 +1,7 @@
+[
+ {"id": "no-new-document-tool",
+  "title": "Creating a document and drawing in VectorCraft",
+  "text": "There is no new_document tool: run file.new {width, height, title} (craftmcp.py new vectorcraft width=600 height=500 title=X). Draw with draw_shape {shape: rectangle|ellipse|polygon|star|line, fill/stroke as '#rrggbb', strokeWidth} and draw_path {points or SVG d}; objects stack in creation order. For many objects write a Python script that calls the tools instead of one command per object.",
+  "keys": ["new document", "start a drawing", "create artboard", "draw many shapes", "illustration script", "make a vector picture"],
+  "see": ["file.new", "draw_shape", "draw_path"]}
+]

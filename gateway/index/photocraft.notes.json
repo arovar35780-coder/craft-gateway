@@ -1,0 +1,22 @@
+[
+ {"id": "shape-with-gradient",
+  "title": "A circle or shape with a gradient fill",
+  "text": "shape.create {kind: ellipse|rect|roundedRect|polygon|star|line|path, rect: [x, y, w, h], fill: {gradient: {stops: [[0, '#hex'], [1, '#hex']], style: 'radial'|'linear'|'angle'|'reflected'|'diamond', angle, scale}}, stroke?: {width, color}}. A gradient fill LAYER over the whole canvas is layer.newFillLayer.gradient instead.",
+  "keys": ["draw a circle", "gradient circle", "radial gradient shape", "shape with gradient", "draw ellipse", "vector shape", "colored disc"],
+  "see": ["shape.create", "layer.newFillLayer.gradient"]},
+ {"id": "export-files",
+  "title": "Writing the document to a file",
+  "text": "craftmcp.py export photocraft path=<absolute file> (the gateway gives PhotoCraft a write folder; a PNG keeps transparency), or doc_export with a relative path. doc_render_preview returns an image of the flattened canvas without writing a file.",
+  "keys": ["save as png", "export image", "write png", "save a copy", "export transparent png", "output file"],
+  "see": ["doc_export", "doc_render_preview", "doc_save"]},
+ {"id": "soft-highlight-and-grain",
+  "title": "Recipe: soft highlight and film grain clipped to a shape",
+  "text": "Highlight: shape.create an ellipse with an RGBA fill, layer.rasterize.shape, filter.blur.gaussianBlur, layer.createClippingMask (clips to the layer below). Grain: layer.new.layer, select.all, edit.fill #808080, filter.noise.addNoise (gaussian, monochromatic), layer.layerStyle.blendingOptions {blend: overlay, opacity}, layer.createClippingMask. Depth: layer.layerStyle.innerShadow.",
+  "keys": ["highlight", "glow", "film grain", "noise texture", "clip to shape", "inner shadow", "sticker effect", "3d look"],
+  "see": ["layer.createClippingMask", "filter.noise.addNoise", "filter.blur.gaussianBlur", "layer.layerStyle.innerShadow"]},
+ {"id": "closing-documents",
+  "title": "Closing documents",
+  "text": "doc_close does not work through the GUI bridge. file.close {document: index} closes one (it does not ask about unsaved changes), and craftmcp.py cleanup photocraft lists and closes throwaway documents safely (dry run by default).",
+  "keys": ["close document", "close tab", "discard document", "clean up documents"],
+  "see": ["file.close", "file.closeAll"]}
+]

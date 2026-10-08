@@ -1,0 +1,83 @@
+# Reference book manifest for build.py with every option. Paths are relative to this file:
+# copy it next to your Markdown folder (or use new_book.py) and adjust template/source/output.
+template = "../templates/book-6x9.designcraft"
+source = "text"      # folder with the Markdown files
+output = "out/example"     # writes out/example.designcraft and out/example.pdf
+
+# Sections in reading order. kind: halftitle | copyright | title | front | chapter | back.
+#   halftitle  first page: title and subtitle only (the same file as the title page)
+#   title      title page (the B master, no page number): title, subtitle, author, publisher
+#   copyright  optional page 2 block (every source line is a paragraph); skipped when the file is missing
+#   front/back opener page with the matter heading style (introduction, conclusion, ...)
+#   chapter    opener page with the chapter heading style; `glob` takes several files in natural order
+# The contents page is reserved before the first section after title/copyright.
+[[section]]
+kind = "halftitle"
+file = "title.md"
+
+[[section]]
+kind = "copyright"
+file = "copyright.md"
+optional = true
+
+[[section]]
+kind = "title"
+file = "title.md"
+
+[[section]]
+kind = "front"
+file = "introduction.md"
+
+[[section]]
+kind = "chapter"
+glob = "chapter-*.md"
+
+[[section]]
+kind = "back"
+file = "conclusion.md"
+
+[toc]
+enabled = true
+title = "Contents"
+blank_after = true   # the template has an empty page between the contents and the first section
+
+[title_page]
+title_size = 33      # points; the title paragraph is set smaller than its style on the title pages
+
+[numbering]
+# Page numbering style of the front matter (title, copyright, contents); the body restarts at 1 in
+# arabic. Leave empty for one continuous arabic numbering.
+front_matter = "lowerRoman"
+
+# Prefixes of the template's parent pages: openers (chapter first pages) and ordinary pages.
+[masters]
+opener = "C"
+body = "A"
+title = "B"          # the title page master (no running header, no page number)
+blank = "B"          # master of the empty page after the contents; use "A" to give it a page number
+
+# Margins in points as set on those parents in the template (page size is read from the template).
+[layout]
+opener_top = 98.0
+body_top = 53.0
+bottom = 67.0
+inside = 58.0
+outside = 50.0
+copyright_top = 405.75     # the copyright block sits in the lower part of page 2
+halftitle_top = 204.75     # where the half-title and title text start
+title_top = 177.75
+
+# Paragraph and character styles of the template (these are the defaults; list only what differs).
+[styles]
+title = "Book Title (Front)"
+subtitle = "Book Subtitle (Front)"
+author = "Author Name and Publishing House (Front)"
+publisher = "Author Name and Publishing House (Front)"
+copyright = "Copyright"
+matter_heading = "Front or Back Matter (In TOC)"
+chapter_heading = "Heading 1"
+heading2 = "Heading 2"
+heading3 = "Heading 3"
+body_first = "Body (No Indent)"
+body = "Body (Indented)"
+running_head = "Running Head"   # character style on the short heading prefix ("Chapter 3")

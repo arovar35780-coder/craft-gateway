@@ -1,0 +1,7 @@
+[
+ {"id": "bridge-has-its-own-documents",
+  "title": "The MCP bridge and the window have separate documents",
+  "text": "Documents opened in the window with ui_open are invisible to doc_list, page_render and the other doc_* tools: the bridge has its own session. To render or edit a PDF through the MCP open it with doc_open path=<pdf> (a new document id), render with page_render {doc, page, dpi}, save with doc_save. ui_screenshot shows the window (it must be visible).",
+  "keys": ["open a pdf", "pdf pages as images", "render pdf page", "edit pdf", "document id", "window and bridge", "ui_open"],
+  "see": ["doc_open", "page_render", "doc_save", "ui_open"]}
+]

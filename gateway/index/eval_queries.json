@@ -1,0 +1,658 @@
+[
+ {
+  "slot": "designcraft",
+  "query": "link text frames so the text flows from one to the next",
+  "accept": [
+   "^(frame\\.thread)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "close a document tab without saving",
+  "accept": [
+   "^(file\\.close)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "remove a character style",
+  "accept": [
+   "^(style\\.character\\.delete)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "check the file for printing problems",
+  "accept": [
+   "^(preflight\\.run)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "show how the page will look when printed without guides",
+  "accept": [
+   "^(view\\.togglePreview|view\\.screenMode)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "put a color on a frame",
+  "accept": [
+   "^(object\\.fill)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "export the whole document to PDF",
+  "accept": [
+   "^(file\\.exportPdf)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "add film grain texture",
+  "accept": [
+   "^(filter\\.noise\\.addNoise)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "make a soft glow around a layer",
+  "accept": [
+   "^(layer\\.layerStyle\\.outerGlow|layer\\.layerStyle\\.innerGlow)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "blur the background slightly",
+  "accept": [
+   "^(filter\\.blur\\.gaussianBlur)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "draw a circle with a gradient",
+  "accept": [
+   "^(shape\\.create)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "restrict a layer to the shape below it",
+  "accept": [
+   "^(layer\\.createClippingMask)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "save a flattened copy as PNG",
+  "accept": [
+   "^(file\\.saveACopy|file\\.export\\.quickExport)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "close the current document",
+  "accept": [
+   "^(file\\.close)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "undo my last change",
+  "accept": [
+   "^(edit\\.undo)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "insert another page into the document",
+  "accept": [
+   "^(layout\\.pages\\.insert)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "build a table of contents",
+  "accept": [
+   "^(toc\\.generate)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "search for a word and replace it with another",
+  "accept": [
+   "^(find\\.change|find\\.find|find\\.changeObjects)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "check my spelling",
+  "accept": [
+   "^(spelling\\.check)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "add a footnote at the cursor",
+  "accept": [
+   "^(footnote\\.insert)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "turn the selected text italic",
+  "accept": [
+   "^(type\\.italic)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "rotate the selected object by some degrees",
+  "accept": [
+   "^(transform\\.rotate)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "lock an object so it cannot be moved",
+  "accept": [
+   "^(object\\.lock)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "put a picture on the page",
+  "accept": [
+   "^(file\\.place|place\\.drop)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "designcraft",
+  "query": "apply a paragraph style to the selected paragraph",
+  "accept": [
+   "^(style\\.paragraph\\.apply)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "change the size of the image in pixels",
+  "accept": [
+   "^(image\\.imageSize)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "make the canvas bigger around the picture",
+  "accept": [
+   "^(image\\.canvasSize)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "trim the picture to a rectangle",
+  "accept": [
+   "^(image\\.crop)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "make a copy of the current layer",
+  "accept": [
+   "^(layer\\.duplicate)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "merge a layer into the one beneath it",
+  "accept": [
+   "^(layer\\.mergeDown)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "make the picture brighter",
+  "accept": [
+   "^(image\\.adjustments\\.brightnessContrast|image\\.adjustments\\.levels|image\\.adjustments\\.curves|image\\.adjustments\\.exposure)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "select every pixel of a similar color",
+  "accept": [
+   "^(select\\.colorRange|select\\.magicWand)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "mirror the image left to right",
+  "accept": [
+   "^(image\\.imageRotation\\.flipCanvasHorizontal|edit\\.transform\\.flipHorizontal)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "sharpen a soft blurry photo",
+  "accept": [
+   "^(filter\\.sharpen\\.unsharpMask|filter\\.sharpen\\.smartSharpen|filter\\.sharpen\\.sharpen)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "add a drop shadow behind a layer",
+  "accept": [
+   "^(layer\\.layerStyle\\.dropShadow)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "photocraft",
+  "query": "flatten all layers into one",
+  "accept": [
+   "^(layer\\.flattenImage|layer\\.mergeVisible)$"
+  ],
+  "set": "designcraft+photocraft"
+ },
+ {
+  "slot": "vectorcraft",
+  "query": "draw a star shape",
+  "accept": [
+   "draw_shape|shape\\.star"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "vectorcraft",
+  "query": "create a new document",
+  "accept": [
+   "^file\\.new$"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "vectorcraft",
+  "query": "export the artwork as an SVG file",
+  "accept": [
+   "export\\.svg|^export$"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "vectorcraft",
+  "query": "combine two shapes into one",
+  "accept": [
+   "pathfinder|unite|compound|merge|combine"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "vectorcraft",
+  "query": "type some text on the artboard",
+  "accept": [
+   "add_text|type_text|text\\.create|text\\.add"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "lightcraft",
+  "query": "crop the photo",
+  "accept": [
+   "crop"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "lightcraft",
+  "query": "give a photo three stars",
+  "accept": [
+   "photo\\.rate|rating"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "lightcraft",
+  "query": "apply a saved look to the picture",
+  "accept": [
+   "apply_preset|preset\\.apply|applyPreset"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "lightcraft",
+  "query": "change exposure and contrast",
+  "accept": [
+   "set_develop|develop\\.|exposure"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "lightcraft",
+  "query": "bring photos into the library",
+  "accept": [
+   "import"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "filmcraft",
+  "query": "cut a clip in two at the playhead",
+  "accept": [
+   "razor|split|cut|blade|addEdit"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "filmcraft",
+  "query": "import video files into the project",
+  "accept": [
+   "media_import|file\\.import|import"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "filmcraft",
+  "query": "add a cross dissolve between two clips",
+  "accept": [
+   "transition|dissolve"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "filmcraft",
+  "query": "show a frame of the edit as a picture",
+  "accept": [
+   "render_frame|exportFrame"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "filmcraft",
+  "query": "write the finished movie to a file",
+  "accept": [
+   "export|render\\.queue"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "printcraft",
+  "query": "merge several PDF files into one",
+  "accept": [
+   "doc_combine|page\\.combine"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "printcraft",
+  "query": "split a PDF into separate files",
+  "accept": [
+   "doc_split|page\\.split"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "printcraft",
+  "query": "leave a note on a page",
+  "accept": [
+   "comment_add|comment\\.note"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "printcraft",
+  "query": "make the PDF file smaller",
+  "accept": [
+   "doc_optimize|doc_reduce|optimize\\.reduce"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "printcraft",
+  "query": "get the text out of a PDF",
+  "accept": [
+   "doc_export_text|text_extract|export\\.text"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "add a keyframe to a property",
+  "accept": [
+   "add_keyframe|addKeyframe|prop\\.addKey"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "put a blur on a layer",
+  "accept": [
+   "add_effect|blur"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "see a frame of the composition",
+  "accept": [
+   "render_frame"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "go back one step",
+  "accept": [
+   "^undo$|edit\\.undo"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "save the project to disk",
+  "accept": [
+   "save_project|file\\.save"
+  ],
+  "set": "other five"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "add Trim Paths to a shape layer",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "wiggle the paths of a shape",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "add a Repeater to a shape layer",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "turbulent displace effect",
+  "accept": [
+   "ec\\.distort\\.turbulentdisplace"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "fractal noise",
+  "accept": [
+   "ec\\.noise\\.fractal$"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "apply a glow effect to a layer",
+  "accept": [
+   "glow"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "change every layer in the comp with a loop",
+  "accept": [
+   "run_script|script\\.run|note:"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "create fifty solids at once",
+  "accept": [
+   "run_script|script\\.run|note:"
+  ],
+  "set": "user report"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "a line that draws itself over time",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "lines that tremble as if drawn by hand",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "reveal a stroke gradually",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "copy a shape several times around a circle",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "make a shape layer path wobble",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "animate a path being drawn on",
+  "accept": [
+   "layer\\.addShapeItem|note:shape-op"
+  ],
+  "set": "user report 2"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "make the arms of a character rotate around the shoulder",
+  "accept": [
+   "note:script-parent-before-animating"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "my layer ends up in the wrong place after I attach it to a null",
+  "accept": [
+   "note:parented-layer-position-space"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "slowly zoom in on the whole scene like a camera",
+  "accept": [
+   "note:camera-null-anchor-pan"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "my script that builds 400 layers times out",
+  "accept": [
+   "note:big-builds-use-cli-script"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "error parenting would create a cycle",
+  "accept": [
+   "note:script-compare-layers-by-name"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "my keyframes stopped working after I added an expression",
+  "accept": [
+   "note:expression-overrides-keyframes"
+  ],
+  "set": "user report 3"
+ },
+ {
+  "slot": "effectcraft",
+  "query": "the shapes my script draws show up in another composition",
+  "accept": [
+   "note:newpath-targets-active-comp"
+  ],
+  "set": "user report 3"
+ }
+]

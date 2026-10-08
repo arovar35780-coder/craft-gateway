@@ -1,0 +1,287 @@
+[
+ {
+  "id": "bulk-edits-use-run-script",
+  "title": "Bulk or repetitive edits: write one script and run it with run_script",
+  "text": "For many similar edits (every layer, a loop, generated layers or comps, keyframes in bulk, building a whole scene) write one After Effects style JavaScript and run it with the run_script tool instead of hundreds of tool calls. One script wrapped in app.beginUndoGroup / app.endUndoGroup is one undo step. Example: app.beginUndoGroup('x'); var c = app.project.items.addComp('Name', 1280, 720, 1, 5, 30); var s = c.layers.addSolid([0.2,0.8,0.4], 'Bar', 800, 28, 1); s.property('ADBE Transform Group').property('ADBE Scale').setValueAtTime(0.3, [0,100]); app.endUndoGroup(); c.numLayers",
+  "keys": [
+   "many layers",
+   "loop",
+   "for every layer",
+   "bulk",
+   "batch",
+   "script",
+   "javascript",
+   "automate",
+   "generate scene",
+   "repeat",
+   "create fifty",
+   "mass edit",
+   "all layers at once",
+   "programmatic"
+  ],
+  "see": [
+   "run_script",
+   "script.run",
+   "batch"
+  ]
+ },
+ {
+  "id": "shape-operators-are-kinds",
+  "title": "Shape layer operators (Round Corners, Offset, Merge, Twist, Zig Zag...) are values of layer.addShapeItem kind",
+  "text": "There is no separate command per shape operator: add them with layer.addShapeItem {kind, layer?, group?}. Rounded corners: round (Round Corners). Grow or shrink an outline: offset (Offset Paths). Puffy or pinched edges: pucker (Pucker & Bloat). Swirl: twist. Zigzag or wavy edges: zigzag (Zig Zag). Union, subtract or intersect shapes into one: merge (Merge Paths). Gradient fill: gfill. Draw-on: trim, wobble: wiggle, copies: repeater (see their own notes). All kinds: group, rect, ellipse, star, polygon, fill, stroke, gfill, trim, repeater, round, offset, pucker, twist, zigzag, wiggle, merge.",
+  "keys": [
+   "shape operator",
+   "shape modifier",
+   "add shape item",
+   "round corners",
+   "offset paths",
+   "pucker and bloat",
+   "twist",
+   "zig zag",
+   "merge paths",
+   "gradient fill"
+  ],
+  "see": [
+   "layer.addShapeItem"
+  ]
+ },
+ {
+  "id": "shape-op-trim-paths",
+  "title": "A line that draws itself on over time: Trim Paths (layer.addShapeItem kind trim)",
+  "text": "To make a shape layer line or stroke draw itself on, reveal gradually or grow from nothing to the full path, add Trim Paths with layer.addShapeItem {kind: \"trim\", layer} and animate its End from 0 to 100 (and Start for a travelling segment). Lighter and better for shape lines than the Write-on effect.",
+  "keys": [
+   "trim paths",
+   "draw on",
+   "line draws itself",
+   "draw a line on over time",
+   "reveal a stroke gradually",
+   "write on a shape line",
+   "animate a path being drawn",
+   "grow a line",
+   "stroke animation",
+   "path reveal"
+  ],
+  "see": [
+   "layer.addShapeItem"
+  ]
+ },
+ {
+  "id": "shape-op-wiggle-paths",
+  "title": "Hand-drawn wobble and line boil on shape paths: Wiggle Paths (layer.addShapeItem kind wiggle)",
+  "text": "To make shape layer lines tremble, wobble or boil as if drawn by hand, add Wiggle Paths with layer.addShapeItem {kind: \"wiggle\", layer}: small Size (1-3), Detail around 25, Wiggles/Second 0 and a stepped phase expression such as Math.floor(time*8)*97 so the line jumps a few times per second.",
+  "keys": [
+   "wiggle paths",
+   "hand drawn wobble",
+   "line boil",
+   "jitter",
+   "shaky lines",
+   "trembling line",
+   "lines drawn by hand",
+   "wobble a shape path",
+   "pencil sketch look",
+   "rough outline"
+  ],
+  "see": [
+   "layer.addShapeItem"
+  ]
+ },
+ {
+  "id": "shape-op-repeater",
+  "title": "Copies of a shape in a row, a grid or around a circle: Repeater (layer.addShapeItem kind repeater)",
+  "text": "To duplicate a shape several times with an offset (in a row, a grid, around a circle, a ring of dots), add a Repeater with layer.addShapeItem {kind: \"repeater\", layer} and set its Copies and its transform (position offset, rotation, scale per copy).",
+  "keys": [
+   "repeater",
+   "duplicate a shape",
+   "copies in a row",
+   "copy around a circle",
+   "ring of dots",
+   "grid of copies",
+   "array of shapes",
+   "radial copies",
+   "repeat shape"
+  ],
+  "see": [
+   "layer.addShapeItem"
+  ]
+ },
+ {
+  "id": "apply-effects",
+  "title": "Effects (Gaussian Blur, Glow, Turbulent Displace, Fractal Noise...) are applied with add_effect",
+  "text": "Effects are not commands. They are indexed as items of kind effect (find shows their id, category and parameters); the full registry is the list_effects tool (filter=<text>). Apply one with add_effect {effect: id or name, layer: id | '#n' | name, comp?, values?: {parameter id: value}}.",
+  "keys": [
+   "apply effect",
+   "add effect",
+   "effect id",
+   "effect registry",
+   "list effects",
+   "plugin effect",
+   "visual effect",
+   "filter on layer"
+  ],
+  "see": [
+   "add_effect",
+   "list_effects",
+   "effect.apply"
+  ]
+ },
+ {
+  "id": "render-needs-comp",
+  "title": "Rendering and viewing a composition",
+  "text": "render_frame renders the ACTIVE composition unless you pass comp=<id>, so always pass comp. A comp is shown in the window only after comp.open {comp}. Playback: control method ui.playback {action: play|stop}; the Timeline panel: ui.panel.show {panel: Timeline}.",
+  "keys": [
+   "render frame",
+   "see the composition",
+   "preview comp",
+   "open comp",
+   "play animation",
+   "show timeline",
+   "timeline panel",
+   "start playback"
+  ],
+  "see": [
+   "render_frame",
+   "comp.open"
+  ]
+ },
+ {
+  "id": "export-lottie",
+  "title": "Export a composition as Lottie",
+  "text": "file.exportLottie {comp, path (.json or .lottie), includeExpressions?, textAsShapes?}. Most Lottie players do not support expressions, so text driven by an expression becomes static unless the player does.",
+  "keys": [
+   "lottie",
+   "export json animation",
+   "dotlottie",
+   "web animation export",
+   "bodymovin"
+  ],
+  "see": [
+   "file.exportLottie"
+  ]
+ },
+ {
+  "id": "script-parent-before-animating",
+  "title": "Rig a character or object with null joints in a script: parent first, animate after",
+  "text": "When a script builds layers and parents them (layer.parent = null, or layer.setParent), parenting compensates for the parent's CURRENT transform, including keyframes and expressions it already has, so children jump. Build in two phases: create every layer and null with static transforms and set all parents first; only then add keyframes, path morphs and expressions (also on the nulls). The parenting keeps world position (it is jump-compensated).",
+  "keys": [
+   "rig a character",
+   "null joints",
+   "parent layers in a script",
+   "puppet rig",
+   "limbs rotate around a joint",
+   "child layer jumps when parented",
+   "parenting moves the layer",
+   "build a rig with nulls"
+  ],
+  "see": [
+   "run_script",
+   "layer.setParent",
+   "layer.newNull"
+  ]
+ },
+ {
+  "id": "parented-layer-position-space",
+  "title": "Keyframing the position of a parented layer: values are in the parent's space, not comp pixels",
+  "text": "Position of a layer that has a parent is in the parent's layer space (a null's anchor is [50, 50]), so comp coordinates put it in the wrong place. Read the layer's position value right after parenting, subtract the comp position it had before, and add that offset to every comp-space key. Valid while the parent chain is not rotated or scaled at rest.",
+  "keys": [
+   "position of a child layer",
+   "keyframe a parented layer",
+   "layer moves to the wrong place",
+   "parent space coordinates",
+   "animate a layer attached to a null",
+   "position keys offset"
+  ],
+  "see": [
+   "add_keyframe",
+   "set_property",
+   "layer.setParent"
+  ]
+ },
+ {
+  "id": "camera-null-anchor-pan",
+  "title": "Pan and zoom a whole 2D scene with a camera null: key the null's anchor point, not its position",
+  "text": "Parent every layer of a scene to one null at the comp centre and animate it as a camera. Zoom with its scale; pan by keying its ANCHOR POINT (anchor = point to look at - comp centre + [50, 50]) and keep its position at the comp centre, so the zoom always stays centred on screen. Panning with position moves the scale pivot off-screen.",
+  "keys": [
+   "camera move",
+   "pan the scene",
+   "zoom into the scene",
+   "push in",
+   "2d camera",
+   "move everything together",
+   "centred zoom",
+   "follow the action"
+  ],
+  "see": [
+   "layer.newNull",
+   "layer.setParent",
+   "add_keyframe"
+  ]
+ },
+ {
+  "id": "big-builds-use-cli-script",
+  "title": "Building a scene or film with hundreds of layers: run the script headless with effectcraft-cli (MCP calls stop after 60 s)",
+  "text": "A run_script call through the gateway times out after about 60 s (a 400-layer scene did). For big generated builds run the same JavaScript headless: effectcraft-cli --empty script build.jsx --save-as film.ecproj (wrap each scene in (function(){...})()), preview with effectcraft-cli --project film.ecproj render-frame --comp NAME --time T --out f.png, and render with effectcraft-cli --project film.ecproj --gpu render --comp NAME --out film.mp4 --format h264. Then open the .ecproj in the app.",
+  "keys": [
+   "hundreds of layers",
+   "script times out",
+   "long script",
+   "build a whole film",
+   "headless build",
+   "render without the window",
+   "command line render",
+   "generate many scenes"
+  ],
+  "see": [
+   "run_script",
+   "script.run"
+  ]
+ },
+ {
+  "id": "script-compare-layers-by-name",
+  "title": "Checking whether two layers are the same in a script: compare names or indexes, not objects",
+  "text": "comp.layer(i) and other lookups return a new wrapper object each time, so layerA === layerB (or !==) is never reliable: a loop that parents every layer except the camera with L !== CAM parented the camera to itself and failed with 'parenting would create a cycle'. Compare L.name or L.index instead.",
+  "keys": [
+   "same layer check",
+   "compare layers",
+   "parenting would create a cycle",
+   "skip one layer in a loop",
+   "layer equality in script"
+  ],
+  "see": [
+   "run_script",
+   "layer.setParent"
+  ]
+ },
+ {
+  "id": "expression-overrides-keyframes",
+  "title": "Keyframes seem ignored on a property with an expression: return value outside the expression's time window",
+  "text": "An expression replaces the keyframed value. A gated expression such as (t>=2&&t<5) ? wobble : 0 hides the property's keyframes outside the window; return value there instead: (t>=2&&t<5) ? wobble : value. Use value + offset to add motion on top of keys.",
+  "keys": [
+   "keyframes ignored",
+   "animation not playing",
+   "expression overrides keys",
+   "combine expression and keyframes",
+   "wiggle on top of keyframes"
+  ],
+  "see": [
+   "set_property",
+   "add_keyframe"
+  ]
+ },
+ {
+  "id": "newpath-targets-active-comp",
+  "title": "Drawing paths from a script into a new comp: open that comp first (shape.newPath draws into the active comp)",
+  "text": "shape.newPath (also through app.run inside run_script) adds to the ACTIVE comp and to the selected shape layer: after app.project.items.addComp call comp.openInViewer() (or comp.open), and run edit.deselectAll before each path that should get a layer of its own.",
+  "keys": [
+   "draw paths into a new comp",
+   "shapes appear in the wrong comp",
+   "path added to the wrong layer",
+   "app.run shape.newPath",
+   "each path its own layer"
+  ],
+  "see": [
+   "shape.newPath",
+   "comp.open",
+   "run_script"
+  ]
+ }
+]
