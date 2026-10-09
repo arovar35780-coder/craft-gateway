@@ -1,7 +1,7 @@
 # Crafting Apps (built from source)
 
 `build_crafting_apps.ps1` builds the apps from clones that sit next to this folder (`../photocraft`, `../vectorcraft`,
-`../filmcraft`, `../lightcraft`, `../pdfcraft` (or an older `../printcraft` checkout), `../effectcraft`, `../designcraft`) and copies the binaries here.
+`../filmcraft`, `../lightcraft`, `../pdfcraft`, `../effectcraft`, `../designcraft`) and copies the binaries here.
 Each app folder then holds `<app>.exe`, `<app>-cli.exe` (the MCP bridge) and `BUILD_INFO.txt` (the commit it was
 built from). These folders are what the gateway's slots point at.
 

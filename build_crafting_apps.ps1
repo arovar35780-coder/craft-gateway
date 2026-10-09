@@ -6,8 +6,6 @@
 # and accept both "a b c" and "a,b,c".
 param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Apps)
 if (-not $Apps) { $Apps = @('vectorcraft', 'lightcraft', 'photocraft', 'pdfcraft', 'filmcraft', 'effectcraft') }
-# Upstream renamed PrintCraft to PdfCraft; a checkout made before that may still live in .\printcraft.
-$oldFolders = @{ pdfcraft = 'printcraft' }
 $Apps = @($Apps | ForEach-Object { $_ -split ',' } | Where-Object { $_ })
 $root = $PSScriptRoot
 $out = Join-Path $root 'crafting-bin'
@@ -19,7 +17,6 @@ function Log($m) { $line = "{0}  {1}" -f (Get-Date -Format 'HH:mm:ss'), $m; $lin
 Log "start: $($Apps -join ', ')"
 foreach ($app in $Apps) {
     $repo = Join-Path $root $app
-    if (-not (Test-Path $repo) -and $oldFolders.ContainsKey($app)) { $repo = Join-Path $root $oldFolders[$app] }
     if (-not (Test-Path $repo)) { Log "${app}: SKIP (no folder)"; continue }
     $t0 = Get-Date
     Push-Location $repo
