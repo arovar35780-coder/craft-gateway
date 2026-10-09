@@ -264,7 +264,7 @@ class MonitorCoreTests(GatewayTestCase):
         core = self.core()
         core.poll()
         rows = self.rows(core.snapshot())
-        for slot in ("photocraft", "lightcraft", "filmcraft", "printcraft", "effectcraft"):
+        for slot in ("photocraft", "lightcraft", "filmcraft", "pdfcraft", "effectcraft"):
             row = rows[slot]
             self.assertTrue(row["supported"])
             self.assertEqual(row["path_state"], "empty")

@@ -408,7 +408,7 @@
   "set": "other five"
  },
  {
-  "slot": "printcraft",
+  "slot": "pdfcraft",
   "query": "merge several PDF files into one",
   "accept": [
    "doc_combine|page\\.combine"
@@ -416,7 +416,7 @@
   "set": "other five"
  },
  {
-  "slot": "printcraft",
+  "slot": "pdfcraft",
   "query": "split a PDF into separate files",
   "accept": [
    "doc_split|page\\.split"
@@ -424,7 +424,7 @@
   "set": "other five"
  },
  {
-  "slot": "printcraft",
+  "slot": "pdfcraft",
   "query": "leave a note on a page",
   "accept": [
    "comment_add|comment\\.note"
@@ -432,7 +432,7 @@
   "set": "other five"
  },
  {
-  "slot": "printcraft",
+  "slot": "pdfcraft",
   "query": "make the PDF file smaller",
   "accept": [
    "doc_optimize|doc_reduce|optimize\\.reduce"
@@ -440,7 +440,7 @@
   "set": "other five"
  },
  {
-  "slot": "printcraft",
+  "slot": "pdfcraft",
   "query": "get the text out of a PDF",
   "accept": [
    "doc_export_text|text_extract|export\\.text"

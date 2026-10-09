@@ -1,7 +1,7 @@
 # craft-gateway
 
 One local MCP endpoint for the seven [Crafting Apps](https://getartcraft.com/apps) (DesignCraft, VectorCraft,
-PhotoCraft, LightCraft, FilmCraft, PrintCraft, EffectCraft), so an AI agent can work across all of them through
+PhotoCraft, LightCraft, FilmCraft, PdfCraft, EffectCraft), so an AI agent can work across all of them through
 one place, plus the tools we built on top of it: a book builder, a print-PDF probe and an example flyer.
 
 Each Crafting App ships its own MCP bridge, but they start differently, take different flags and ports, and some
@@ -33,7 +33,7 @@ The scripts expect the app clones next to this repository's folders:
 ```
 <root>/
   gateway/  crafting-bin/  projects/  build_crafting_apps.ps1     (this repository)
-  designcraft/  vectorcraft/  photocraft/  lightcraft/  filmcraft/  printcraft/  effectcraft/   (app clones)
+  designcraft/  vectorcraft/  photocraft/  lightcraft/  filmcraft/  pdfcraft/  effectcraft/   (app clones)
 ```
 
 ## Quick start (Windows)
@@ -71,7 +71,7 @@ are in [gateway/README.md](gateway/README.md#trust-model-read-this). Do not expo
 ## Status
 
 - Developed and tested on Windows 11 with Python 3.12. Other platforms are untested.
-- PhotoCraft, LightCraft and PrintCraft need small automation patches that are not upstream yet; stock builds of
+- PhotoCraft, LightCraft and PdfCraft need small automation patches that are not upstream yet; stock builds of
   those three do not work with the gateway (see [gateway/README.md](gateway/README.md#slots)).
 - The skill's texts assume Claude Code; the client `craftmcp.py` itself is a plain Python 3.12 script and works
   from any shell.

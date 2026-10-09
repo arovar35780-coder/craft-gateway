@@ -22,7 +22,7 @@ except tk.TclError:
     TK_AVAILABLE = False
 
 
-UNSUPPORTED = ("photocraft", "lightcraft", "filmcraft", "printcraft", "effectcraft")
+UNSUPPORTED = ("photocraft", "lightcraft", "filmcraft", "pdfcraft", "effectcraft")
 
 
 def make_row(slot, supported, state, **kw):

@@ -77,6 +77,10 @@ class SlotTests(unittest.TestCase):
         args = slots_mod.LAUNCH["photocraft"]["app_args"]
         self.assertIn("--automation-write-root", args)
         self.assertEqual(args[args.index("--automation-write-root") + 1], "{exchange}")
+        self.assertEqual(args[args.index("--automation-read-root") + 1], "{exchange}")
+        # the fork's tokenless control channel, on both ends
+        self.assertIn("--control-no-auth", args)
+        self.assertIn("--control-no-auth", slots_mod.LAUNCH["photocraft"]["bridge_args"])
         # never the whole temp dir
         default = os.path.normpath(gateway_mod.exchange_dir())
         self.assertNotEqual(default, os.path.normpath(tempfile.gettempdir()))

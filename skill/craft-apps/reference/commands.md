@@ -24,12 +24,14 @@ $C rpc <slot> <method> ...           # raw JSON-RPC to the app's bridge
 
 ## Common verbs (one call, mapped to each app's own tools; `$C verbs <slot>` shows the mapping)
 ```
-$C new <slot> [key=value...]         # new document (designcraft, photocraft, printcraft; vectorcraft via file.new, effectcraft via comp.new; lightcraft and filmcraft have none)
+$C new <slot> [key=value...]         # new document (designcraft, photocraft, pdfcraft; vectorcraft via file.new, effectcraft via comp.new; lightcraft and filmcraft have none)
 $C inspect <slot> [key=value...]     # state of the document / project / UI
 $C render <slot> [key=value...]      # an image of the work; extra arguments per app: page=, comp=, seconds=, doc= (see apps.md)
 $C export <slot> path=<file>         # another format (png etc.); photocraft: an absolute path is exported via the gateway exchange folder and copied there
-$C save <slot> path=<file>           # save (designcraft, vectorcraft, photocraft, printcraft, effectcraft)
+$C save <slot> path=<file>           # save (designcraft, vectorcraft, photocraft, pdfcraft, effectcraft); photocraft: an absolute path goes through the exchange folder like export
+$C open photocraft path=<file>       # photocraft only: an absolute path is copied to <exchange>\in\ and opened from there (the app reads only below the exchange folder)
 ```
+PhotoCraft works on the copy: `save photocraft` without `path=` writes the copy in the exchange folder, so save with an absolute `path=` to update the original.
 Images are saved to `%TEMP%\craft-mcp\*.png`: Read the path the command prints.
 
 ## Finding tools and commands (semantic search, offline)

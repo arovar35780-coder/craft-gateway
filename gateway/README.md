@@ -29,7 +29,7 @@ Python 3.12, **standard library only**. No network beyond `127.0.0.1`.
 ## Slots
 
 Seven fixed slots exist and all are implemented. PhotoCraft, LightCraft and
-PrintCraft need builds with small automation patches that are not upstream yet
+PdfCraft need builds with small automation patches that are not upstream yet
 (`--control PORT` without a token, `documents` in `ui.inspect`, `app.quit`);
 stock upstream builds of those three will not work with the gateway.
 
@@ -39,7 +39,7 @@ stock upstream builds of those three will not work with the gateway.
 | vectorcraft | `--control PORT` | `mcp --connect 127.0.0.1:PORT` (also `--headless`) | `ui.inspect.documents[].dirty` |
 | photocraft | `--control PORT` | `mcp --bridge PORT` | `ui.inspect.session.documents[].dirty` |
 | lightcraft | `--control PORT` | `mcp --connect PORT` | `ui.inspect.documents[].dirty` |
-| printcraft | `--control PORT` | `mcp --connect PORT` | `ui.inspect.documents[].dirty` |
+| pdfcraft | `--control PORT` | `mcp --connect PORT` | `ui.inspect.documents[].dirty` |
 | filmcraft | `--control PORT` | `mcp --bridge 127.0.0.1:PORT` | `engine.execute project.inspect` -> `dirty` |
 | effectcraft | `--control PORT` | `mcp --bridge PORT` | `engine.execute project.summary` -> `dirty`; `app.quit {force}` on forced stop |
 

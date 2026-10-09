@@ -38,7 +38,7 @@ import tempfile
 import time
 import tomllib
 
-SLOTS = ("designcraft", "vectorcraft", "photocraft", "lightcraft", "filmcraft", "printcraft", "effectcraft")
+SLOTS = ("designcraft", "vectorcraft", "photocraft", "lightcraft", "filmcraft", "pdfcraft", "effectcraft")
 # The skill lives in <repo>/skill/craft-apps/scripts next to <repo>/gateway; it is installed into the skills folder
 # as a link (junction), and realpath follows the link back into the repository.
 GATEWAY_DIR = os.environ.get("CRAFT_GATEWAY_DIR") or os.path.normpath(
@@ -295,46 +295,49 @@ RUNNER = {  # generic command runner: (tool, name of the command-id argument)
     "photocraft": ("command_run", "id"),
     "lightcraft": ("run_command", "command"),
     "filmcraft": ("command_run", "id"),
-    "printcraft": ("ui_command", "id"),  # desktop app registry only; takes no params
+    "pdfcraft": ("ui_command", "id"),  # desktop app registry only; takes no params
     "effectcraft": ("execute_command", "command"),
 }
 VERBS = {
     "commands": {
         "designcraft": ("list_commands",), "vectorcraft": ("list_commands",), "photocraft": ("command_list",),
-        "lightcraft": ("list_commands",), "filmcraft": ("command_list",), "printcraft": ("command_list",),
+        "lightcraft": ("list_commands",), "filmcraft": ("command_list",), "pdfcraft": ("command_list",),
         "effectcraft": ("list_commands",),
     },
     "new": {
-        "designcraft": ("new_document",), "photocraft": ("doc_new",), "printcraft": ("doc_create",),
+        "designcraft": ("new_document",), "photocraft": ("doc_new",), "pdfcraft": ("doc_create",),
         "vectorcraft": ("run", "file.new"), "effectcraft": ("run", "comp.new"),
     },
     "inspect": {
         "designcraft": ("inspect_document",), "vectorcraft": ("inspect_document",), "photocraft": ("doc_inspect",),
-        "lightcraft": ("inspect_ui",), "filmcraft": ("project_inspect",), "printcraft": ("doc_info",),
+        "lightcraft": ("inspect_ui",), "filmcraft": ("project_inspect",), "pdfcraft": ("doc_info",),
         "effectcraft": ("get_project",),
     },
     "render": {  # an image of the work, from the engine where the app offers it (see SKILL.md)
         "designcraft": ("render_page",), "vectorcraft": ("screenshot",), "photocraft": ("doc_render_preview",),
-        "lightcraft": ("render_photo",), "filmcraft": ("render_frame",), "printcraft": ("page_render",),
+        "lightcraft": ("render_photo",), "filmcraft": ("render_frame",), "pdfcraft": ("page_render",),
         "effectcraft": ("render_frame",),
     },
     "export": {  # write the work to a file in another format (path=...; photocraft: see cmd_verb)
         "designcraft": ("export_png",), "vectorcraft": ("export",), "photocraft": ("doc_export",),
-        "lightcraft": ("export",), "printcraft": ("doc_export_images",),
+        "lightcraft": ("export",), "pdfcraft": ("doc_export_images",),
     },
     "save": {
         "designcraft": ("save_document",), "vectorcraft": ("save_file",), "photocraft": ("doc_save",),
-        "printcraft": ("doc_save",), "effectcraft": ("save_project",),
+        "pdfcraft": ("doc_save",), "effectcraft": ("save_project",),
+    },
+    "open": {  # photocraft: an absolute path is copied into the exchange folder first (see open_photocraft)
+        "photocraft": ("doc_open",),
     },
 }
 
 
 def run_arguments(slot, command, params):
     tool, key = RUNNER[slot]
-    if slot == "printcraft" and params:
-        raise Fail("printcraft's command runner (ui_command) takes no params; use `call printcraft control_call` or a doc_* tool")
+    if slot == "pdfcraft" and params:
+        raise Fail("pdfcraft's command runner (ui_command) takes no params; use `call pdfcraft control_call` or a doc_* tool")
     arguments = {key: command}
-    if slot != "printcraft":
+    if slot != "pdfcraft":
         arguments["params"] = params
     return tool, arguments
 
@@ -346,16 +349,35 @@ def cmd_run(args):
     return do_call(args, tool, arguments)
 
 
-def export_photocraft(args, arguments):
+def exchange_dir():
+    return os.environ.get("CRAFT_EXCHANGE_DIR") or os.path.join(tempfile.gettempdir(), "craft-exchange")
+
+
+def open_photocraft(args, arguments):
+    """PhotoCraft opens files only below its automation read root (the gateway's exchange folder), by
+    relative path. An absolute `path=` is copied into `in/` there and opened from it."""
+    import shutil
+    source = arguments.get("path")
+    if not source or not os.path.isabs(source):
+        return do_call(args, "doc_open", arguments)
+    if not os.path.isfile(source):
+        raise Fail("no such file: %s" % source)
+    rel = "in/%s" % os.path.basename(source)
+    os.makedirs(os.path.join(exchange_dir(), "in"), exist_ok=True)
+    shutil.copy2(source, os.path.join(exchange_dir(), rel))
+    return do_call(args, "doc_open", dict(arguments, path=rel))
+
+
+def export_photocraft(args, arguments, tool="doc_export"):
     """PhotoCraft writes only below its automation write root (the gateway's exchange folder) and takes
-    relative paths. An absolute `path=` is exported there under a temporary name and copied to it."""
+    relative paths. An absolute `path=` is written there under a temporary name and moved to it."""
     import shutil
     target = arguments.get("path")
     if not target or not os.path.isabs(target):
-        return do_call(args, "doc_export", arguments)
-    exchange = os.environ.get("CRAFT_EXCHANGE_DIR") or os.path.join(tempfile.gettempdir(), "craft-exchange")
+        return do_call(args, tool, arguments)
+    exchange = exchange_dir()
     temp_name = "export-%d%s" % (os.getpid(), os.path.splitext(target)[1] or ".png")
-    code = do_call(args, "doc_export", dict(arguments, path=temp_name))
+    code = do_call(args, tool, dict(arguments, path=temp_name))
     produced = os.path.join(exchange, temp_name)
     if code == 0 and os.path.isfile(produced):
         os.makedirs(os.path.dirname(target), exist_ok=True)
@@ -373,8 +395,10 @@ def cmd_verb(args):
         have = sorted(VERBS[args.verb])
         raise Fail("%s has no `%s` through MCP (apps that do: %s); use `tools %s` / `run`" % (args.slot, args.verb, ", ".join(have), args.slot))
     arguments = parse_args_list(args.args)
-    if args.verb == "export" and args.slot == "photocraft":
-        return export_photocraft(args, arguments)
+    if args.slot == "photocraft" and args.verb in ("export", "save"):
+        return export_photocraft(args, arguments, entry[0])
+    if args.slot == "photocraft" and args.verb == "open":
+        return open_photocraft(args, arguments)
     if entry[0] == "run":
         tool, arguments = run_arguments(args.slot, entry[1], arguments)
     else:

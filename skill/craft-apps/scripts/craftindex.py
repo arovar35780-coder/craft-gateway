@@ -34,7 +34,7 @@ SHORTLIST = 20
 SKIP_TOOL_PREFIX = {"lightcraft": ("cmd_",)}   # these tools only wrap a command that is indexed as `cmd`
 LIST_TOOL = {
     "designcraft": "list_commands", "vectorcraft": "list_commands", "photocraft": "command_list",
-    "lightcraft": "list_commands", "filmcraft": "command_list", "printcraft": "command_list",
+    "lightcraft": "list_commands", "filmcraft": "command_list", "pdfcraft": "command_list",
     "effectcraft": "list_commands",
 }
 KB_SCRIPTS = os.path.expanduser(os.path.join("~", ".claude", "skills", "knowledge-base", "scripts"))

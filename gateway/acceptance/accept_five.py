@@ -1,4 +1,4 @@
-"""Acceptance of the five newer slots (photocraft, lightcraft, filmcraft, printcraft, effectcraft) through the
+"""Acceptance of the five newer slots (photocraft, lightcraft, filmcraft, pdfcraft, effectcraft) through the
 gateway, using the REAL builds in crafting-bin. Temporary CRAFT_GATEWAY_HOME and port 7969 (the user's own
 gateway on 7970 is untouched). Real windows open for a few seconds. Starts and stops only its own processes.
 """
@@ -18,7 +18,7 @@ GW = ROOT / "gateway"
 PORT = 7969
 HOME = tempfile.mkdtemp(prefix="gw_accept5_")
 ENV = {**os.environ, "CRAFT_GATEWAY_HOME": HOME}
-SLOTS = ["photocraft", "lightcraft", "filmcraft", "printcraft", "effectcraft"]
+SLOTS = ["photocraft", "lightcraft", "filmcraft", "pdfcraft", "effectcraft"]
 results = []
 
 
@@ -72,7 +72,7 @@ def main():
             info = status(dirty=True)[s]
             check(f"{s}: running on a gateway port", info["state"] == "running" and 7971 <= (info["control_port"] or 0) <= 7999, json.dumps(info)[:300])
             check(f"{s}: dirty check understood (empty list, not unknown)", info["dirty_documents"] == [], repr(info["dirty_documents"]))
-            probe = {"photocraft": "session_list", "lightcraft": "inspect_ui", "printcraft": "ui_state"}.get(s)
+            probe = {"photocraft": "session_list", "lightcraft": "inspect_ui", "pdfcraft": "ui_state"}.get(s)
             if probe and probe in tools:
                 code_, r = rpc(s, "tools/call", {"name": probe, "arguments": {}}, id_=3)
                 check(f"{s}: GUI tool {probe} reaches the app", code_ == 200 and r and "result" in r and not r["result"].get("isError"), json.dumps(r)[:300])

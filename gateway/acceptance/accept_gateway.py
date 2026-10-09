@@ -78,7 +78,7 @@ def main():
         st = get_json("/status")
         check("status lists seven slots", len(st["apps"]) == 7, str(list(st["apps"])))
         check("designcraft/vectorcraft valid", st["apps"]["designcraft"]["valid"] and st["apps"]["vectorcraft"]["valid"], json.dumps(st["apps"]["designcraft"]))
-        check("other slots disabled", all(st["apps"][a]["state"] == "disabled" for a in ("photocraft", "lightcraft", "filmcraft", "printcraft", "effectcraft")))
+        check("other slots disabled", all(st["apps"][a]["state"] == "disabled" for a in ("photocraft", "lightcraft", "filmcraft", "pdfcraft", "effectcraft")))
         page = urllib.request.urlopen(f"http://127.0.0.1:{PORT}/", timeout=30).read().decode("utf-8", "replace")
         check("start page has the registration line", f"http://127.0.0.1:{PORT}/designcraft" in page and "claude mcp add --transport http" in page)
         check("start page warns about no authentication", "No authentication" in page)

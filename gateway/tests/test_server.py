@@ -265,7 +265,7 @@ class PageTests(GatewayTestCase):
         self.assertIn("apps", data)
         self.assertEqual(set(data["apps"].keys()), {
             "designcraft", "vectorcraft", "photocraft", "lightcraft",
-            "filmcraft", "printcraft", "effectcraft",
+            "filmcraft", "pdfcraft", "effectcraft",
         })
         entry = data["apps"]["designcraft"]
         for key in ("supported", "path", "valid", "reason", "mode", "state",

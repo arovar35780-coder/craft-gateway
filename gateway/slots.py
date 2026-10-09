@@ -13,7 +13,7 @@ SLOTS = [
     "photocraft",
     "lightcraft",
     "filmcraft",
-    "printcraft",
+    "pdfcraft",
     "effectcraft",
 ]
 
@@ -23,7 +23,7 @@ SUPPORTED = {
     "photocraft": True,
     "lightcraft": True,
     "filmcraft": True,
-    "printcraft": True,
+    "pdfcraft": True,
     "effectcraft": True,
 }
 
@@ -45,9 +45,15 @@ LAUNCH = {
     },
     # Sources unified on the local `gateway-unify` branches: --control PORT, no token.
     "photocraft": {
-        # The write root lets doc_export/app.save write PNG/PSD there (paths are relative to it).
-        "app_args": ["--control", "{port}", "--automation-write-root", "{exchange}"],
-        "bridge_args": ["mcp", "--bridge", "{port}"],
+        # PhotoCraft opens and writes files only below its automation roots, with relative paths:
+        # both are the exchange folder (the client copies files in and out of it).
+        # --control-no-auth is the fork's explicit opt-out of the bearer token (loopback only).
+        "app_args": [
+            "--control", "{port}", "--control-no-auth",
+            "--automation-read-root", "{exchange}",
+            "--automation-write-root", "{exchange}",
+        ],
+        "bridge_args": ["mcp", "--bridge", "{addr}", "--control-no-auth"],
         "headless": False,
         "dirty": {"method": "ui.inspect", "docs": ["session", "documents"]},
     },
@@ -57,7 +63,7 @@ LAUNCH = {
         "headless": False,
         "dirty": {"method": "ui.inspect", "docs": ["documents"]},
     },
-    "printcraft": {
+    "pdfcraft": {
         "app_args": ["--control", "{port}"],
         "bridge_args": ["mcp", "--connect", "{port}"],
         "headless": False,

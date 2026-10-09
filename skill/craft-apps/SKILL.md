@@ -1,11 +1,11 @@
 ---
 name: craft-apps
-description: Drive the Crafting Apps (DesignCraft, VectorCraft, PhotoCraft, LightCraft, FilmCraft, PrintCraft, EffectCraft) through the local craft-gateway with the `craftmcp.py` client, no MCP registration needed. Find tools and commands by plain-language search, create and edit layouts, books, flyers, vector art, photos, video and PDFs, render and check results. Not for Adobe apps (InDesign is driven through COM/ExtendScript).
+description: Drive the Crafting Apps (DesignCraft, VectorCraft, PhotoCraft, LightCraft, FilmCraft, PdfCraft, EffectCraft) through the local craft-gateway with the `craftmcp.py` client, no MCP registration needed. Find tools and commands by plain-language search, create and edit layouts, books, flyers, vector art, photos, video and PDFs, render and check results. Not for Adobe apps (InDesign is driven through COM/ExtendScript).
 ---
 
 # Crafting Apps through craft-gateway
 
-One loopback gateway (default port 7970, no authentication; the `gateway/` folder of the craft-gateway repository this skill comes from) starts the seven apps (slots: designcraft, vectorcraft, photocraft, lightcraft, filmcraft, printcraft, effectcraft) and their MCP bridges on demand; `scripts/craftmcp.py` turns any tool of any app into one shell command. The user sets the install folders in the monitor (`gateway\start-monitor.cmd`). photocraft, lightcraft and printcraft need builds with the gateway automation patches. Restart the gateway after changing its code.
+One loopback gateway (default port 7970, no authentication; the `gateway/` folder of the craft-gateway repository this skill comes from) starts the seven apps (slots: designcraft, vectorcraft, photocraft, lightcraft, filmcraft, pdfcraft, effectcraft) and their MCP bridges on demand; `scripts/craftmcp.py` turns any tool of any app into one shell command. The user sets the install folders in the monitor (`gateway\start-monitor.cmd`). photocraft, lightcraft and pdfcraft need builds with the gateway automation patches. Restart the gateway after changing its code.
 
 ```
 C="python $USERPROFILE/.claude/skills/craft-apps/scripts/craftmcp.py"
