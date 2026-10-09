@@ -1,7 +1,7 @@
 # Crafting Apps (built from source)
 
 `build_crafting_apps.ps1` builds the apps from clones that sit next to this folder (`../photocraft`, `../vectorcraft`,
-`../filmcraft`, `../lightcraft`, `../printcraft`, `../effectcraft`, `../designcraft`) and copies the binaries here.
+`../filmcraft`, `../lightcraft`, `../pdfcraft` (or an older `../printcraft` checkout), `../effectcraft`, `../designcraft`) and copies the binaries here.
 Each app folder then holds `<app>.exe`, `<app>-cli.exe` (the MCP bridge) and `BUILD_INFO.txt` (the commit it was
 built from). These folders are what the gateway's slots point at.
 
@@ -12,8 +12,8 @@ built from). These folders are what the gateway's slots point at.
 | LightCraft | `start-lightcraft.cmd` | 7980 | photo library and raw development |
 | FilmCraft | `start-filmcraft.cmd` | 9876 | video, color and sound |
 | EffectCraft | `start-effectcraft.cmd` | 9877 | motion graphics and effects |
-| PhotoCraft | `start-photocraft.cmd` | 9878 (+ token) | image editing |
-| PrintCraft | `start-printcraft.cmd` | none (token file) | reading and organizing PDFs |
+| PhotoCraft | `start-photocraft.cmd` | 9878 (no token, loopback) | image editing |
+| PdfCraft (formerly PrintCraft) | `start-pdfcraft.cmd` | none | reading and organizing PDFs |
 
 The launchers are for using an app by hand or from a script. When an agent works through the gateway, the gateway
 starts the apps itself on free ports (7971-7999) and you do not need the launchers.
@@ -22,7 +22,7 @@ starts the apps itself on free ports (7971-7999) and you do not need the launche
 `powershell -ExecutionPolicy Bypass -File ..\build_crafting_apps.ps1 [app ...]` builds the listed apps (default: all
 six except DesignCraft) with `cargo build --release --locked -p <app> -p <app>-cli` into the shared target dir
 `C:\crafting_target` (about 7 GB for all six) and copies the binaries here. A first build of all six takes about
-40 minutes. Update a clone first with `git -C ..\<app> pull`. Needs the MSVC Build Tools, CMake (PrintCraft) and
+40 minutes. Update a clone first with `git -C ..\<app> pull`. Needs the MSVC Build Tools, CMake (PdfCraft) and
 network access on the first build. A running app cannot be overwritten: close it before rebuilding it.
 
 DesignCraft has its own script, `designcraft\rebuild.ps1` (target dir `C:\dc_target`). Run it from a PowerShell
